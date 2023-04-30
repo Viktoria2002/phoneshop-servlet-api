@@ -1,6 +1,6 @@
 package com.es.phoneshop.web;
 
-import com.es.phoneshop.model.product.Product;
+import com.es.phoneshop.model.Product;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
