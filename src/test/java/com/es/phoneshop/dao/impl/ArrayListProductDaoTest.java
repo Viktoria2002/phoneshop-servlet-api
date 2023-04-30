@@ -1,6 +1,7 @@
 package com.es.phoneshop.dao.impl;
 
 import com.es.phoneshop.dao.ProductDao;
+import com.es.phoneshop.exception.ProductNotFoundException;
 import com.es.phoneshop.model.Product;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,19 +33,19 @@ public class ArrayListProductDaoTest
     }
 
     @Test
-    public void testGetProduct() {
+    public void testGetProduct() throws ProductNotFoundException {
         Product result = productDao.getProduct(2L);
         assertEquals("sgs2", result.getCode());
     }
 
     @Test
-    public void testGetProductNotNull() {
+    public void testGetProductNotNull() throws ProductNotFoundException {
         Product result = productDao.getProduct(2L);
         assertNotNull(result);
     }
 
     @Test
-    public void testSave() {
+    public void testSave() throws ProductNotFoundException {
         Currency usd = Currency.getInstance("USD");
         Product product = new Product("sgs", "Samsung Galaxy S", new BigDecimal(100), usd, 100, "https://raw.githubusercontent.com/andrewosipenko/phoneshop-ext-images/master/manufacturer/Samsung/Samsung%20Galaxy%20S.jpg");
         productDao.save(product);
@@ -62,7 +63,7 @@ public class ArrayListProductDaoTest
     }
 
     @Test
-    public void testDelete() {
+    public void testDelete() throws ProductNotFoundException {
         int size = productDao.findProducts().size();
         productDao.delete(1L);
         assertEquals(size - 1, productDao.findProducts().size());
