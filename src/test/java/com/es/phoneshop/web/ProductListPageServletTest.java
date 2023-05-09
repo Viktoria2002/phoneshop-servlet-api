@@ -4,11 +4,11 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ProductListPageServletTest {
     @Mock
     private HttpServletRequest request;
@@ -28,8 +28,8 @@ public class ProductListPageServletTest {
 
     private ProductListPageServlet servlet = new ProductListPageServlet();
 
-    @Before
-    public void setup(){
+    @BeforeEach
+    public void setup() {
         servlet.init();
         when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
     }
@@ -37,6 +37,7 @@ public class ProductListPageServletTest {
     @Test
     public void testDoGet() throws ServletException, IOException {
         servlet.doGet(request, response);
+
         verify(request).setAttribute(anyString(), anyList());
         verify(requestDispatcher).forward(request, response);
     }
