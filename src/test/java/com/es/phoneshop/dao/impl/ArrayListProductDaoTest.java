@@ -70,7 +70,7 @@ public class ArrayListProductDaoTest {
 
     @Test
     public void testCountFoundWords() {
-        int result = ArrayListProductDao.countFoundWords(SEARCHING_PHASE, PRODUCT_DESCRIPTION);
+        int result = productDao.countFoundWords(SEARCHING_PHASE, PRODUCT_DESCRIPTION);
 
         int expectedCountOfWords = 2;
         assertEquals(expectedCountOfWords, result);

@@ -51,17 +51,50 @@ public class ProductDemoDataServletContextListener implements ServletContextList
         products.add(new Product("simc56", "Siemens C56", new BigDecimal(70), usd, 20, "https://raw.githubusercontent.com/andrewosipenko/phoneshop-ext-images/master/manufacturer/Siemens/Siemens%20C56.jpg"));
         products.add(new Product("simc61", "Siemens C61", new BigDecimal(80), usd, 30, "https://raw.githubusercontent.com/andrewosipenko/phoneshop-ext-images/master/manufacturer/Siemens/Siemens%20C61.jpg"));
         products.add(new Product("simsxg75", "Siemens SXG75", new BigDecimal(150), usd, 40, "https://raw.githubusercontent.com/andrewosipenko/phoneshop-ext-images/master/manufacturer/Siemens/Siemens%20SXG75.jpg"));
-        for (int i = 0; i < products.size(); i++) {
-            List<PriceHistory> priceHistories = new ArrayList<>();
-            LocalDate date = LocalDate.now();
-            BigDecimal price = products.get(i).getPrice();
-            for (int j = 0; j < 3 + (int) (Math.random() * 6); j++) {
-                priceHistories.add(new PriceHistory(date, price, usd));
-                date = date.minusMonths(j + 1).plusDays(1 + (int) (Math.random() * 10));
-                price = price.subtract(new BigDecimal(5 + (int) (Math.random() * 12)));
-            }
-            products.get(i).setHistories(priceHistories);
-        }
+        formPriceHistory(products);
         return products;
+    }
+
+    public void formPriceHistory(List<Product> products) {
+        Currency usd = Currency.getInstance("USD");
+        products.get(0).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(100), usd));
+        products.get(0).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,11), new BigDecimal(90), usd));
+        products.get(0).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,20), new BigDecimal(80), usd));
+        products.get(1).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(200), usd));
+        products.get(1).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,1), new BigDecimal(180), usd));
+        products.get(1).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,2), new BigDecimal(150), usd));
+        products.get(2).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(300), usd));
+        products.get(2).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,5), new BigDecimal(290), usd));
+        products.get(2).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,25), new BigDecimal(286), usd));
+        products.get(3).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(200), usd));
+        products.get(3).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,11), new BigDecimal(90), usd));
+        products.get(3).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,20), new BigDecimal(100), usd));
+        products.get(4).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(1000), usd));
+        products.get(4).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,16), new BigDecimal(900), usd));
+        products.get(4).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,21), new BigDecimal(850), usd));
+        products.get(5).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(320), usd));
+        products.get(5).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,17), new BigDecimal(300), usd));
+        products.get(5).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,22), new BigDecimal(298), usd));
+        products.get(6).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(420), usd));
+        products.get(6).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,11), new BigDecimal(90), usd));
+        products.get(6).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,20), new BigDecimal(100), usd));
+        products.get(7).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(120), usd));
+        products.get(7).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,11), new BigDecimal(117), usd));
+        products.get(7).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,13), new BigDecimal(110), usd));
+        products.get(8).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(70), usd));
+        products.get(8).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,11), new BigDecimal(69), usd));
+        products.get(8).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,20), new BigDecimal(55), usd));
+        products.get(9).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(170), usd));
+        products.get(9).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,16), new BigDecimal(160), usd));
+        products.get(9).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,26), new BigDecimal(157), usd));
+        products.get(10).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(70), usd));
+        products.get(10).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,11), new BigDecimal(67), usd));
+        products.get(10).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,20), new BigDecimal(62), usd));
+        products.get(11).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(80), usd));
+        products.get(11).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,10), new BigDecimal(70), usd));
+        products.get(11).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,20), new BigDecimal(65), usd));
+        products.get(12).getHistories().add(new PriceHistory(LocalDate.now(), new BigDecimal(150), usd));
+        products.get(12).getHistories().add(new PriceHistory(LocalDate.of(2023, 4,11), new BigDecimal(130), usd));
+        products.get(12).getHistories().add(new PriceHistory(LocalDate.of(2023, 3,5), new BigDecimal(120), usd));
     }
 }

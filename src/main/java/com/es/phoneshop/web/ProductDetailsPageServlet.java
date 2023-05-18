@@ -2,8 +2,6 @@ package com.es.phoneshop.web;
 
 import com.es.phoneshop.dao.ProductDao;
 import com.es.phoneshop.dao.impl.ArrayListProductDao;
-import com.es.phoneshop.enums.SortingField;
-import com.es.phoneshop.enums.SortingType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
